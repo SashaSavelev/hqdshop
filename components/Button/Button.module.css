@@ -1,0 +1,55 @@
+.primary {
+  background-color: var(--darkPinky);
+  border-radius: 8px;
+  border: none;
+  box-sizing: border-box;
+  color: var(--background);
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+
+
+  line-height: 20px;
+  list-style: none;
+  margin: 0;
+  outline: none;
+
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 300ms, color 300ms;
+}
+
+.primary:hover,
+.primary:focus {
+  background-color: var(--pinky);
+  color: var(--darkPinky)
+}
+
+
+
+.imageButton {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+   border: none;
+   background: none;
+   color:var(--foreground);
+   cursor: pointer;
+   padding: 3px;
+   height: 20px;
+   transition: color 300ms;
+}
+
+.imageButton:hover, .imageButton:focus {
+    color: var(--darkGray);
+}
+
+.small {
+  padding: 2px 8px;
+}
+
+.medium {
+  padding: 4px 10px;
+}

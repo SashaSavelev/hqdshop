@@ -1,0 +1,12 @@
+.star {
+    margin-right: 2px;
+    border: none;
+}
+
+.filled {
+    color: var(--darkPinky);
+}
+
+.empty {
+  color: var(--pinky);
+}
