@@ -9,6 +9,7 @@ export const P = ({size='m', children, ...props}: PProps): JSX.Element=> {
         cn(
           {[styles.s]: size =='s',
             [styles.m]: size =='m',
+            [styles.l]: size =='l',
           } 
         )
     } {...props}>{children}</p>

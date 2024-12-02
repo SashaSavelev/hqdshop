@@ -1,5 +1,7 @@
 import { Metadata } from "next/dist/lib/metadata/types/metadata-interface";
 import { dbConnect } from "./lib/mongo";
+import './globals.css';
+
 
 export const metadata: Metadata = {
     title: 'hqd shop',
@@ -14,7 +16,7 @@ export default async function RootLayout({
 }: Readonly<{
     children: React.ReactNode;
 }>) {
-  const connection = await dbConnect();
+   await dbConnect();
     return (
         <html lang="en">
             <body>{children}</body>

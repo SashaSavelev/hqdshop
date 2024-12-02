@@ -1,5 +1,5 @@
 import styles from './auth.module.css';
-import { P } from '@/components';
+import Image from 'next/image';
 export default function AuthLayout({
     children,
 }: Readonly<{
@@ -7,8 +7,8 @@ export default function AuthLayout({
 }>) {
     return (
         <body className={styles.center}>
-         
-            <P>Профиль</P>
+          
+            <Image src="/logo.jpg" width={100} height={100} alt='shop-logo'></Image>
             {children}
         </body>
     );

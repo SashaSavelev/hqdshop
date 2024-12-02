@@ -1,9 +1,7 @@
 'use client';
 import React from 'react';
-import styles from '../../auth.module.css';
-import { Button } from '@/components';
-import { GoogleProvider } from '../../components/GoogleProvider';
-import Link from 'next/link';
+import styles from './../auth.module.css';
+import { Button } from '@/app/components';
 import { useRouter } from 'next/navigation';
 
 const RegistrationForm = () => {
@@ -36,8 +34,6 @@ const RegistrationForm = () => {
 
     return (
         <>
-            <p>Уже есть профиль?</p>
-            <Link href="/login">Войти</Link>
             <form onSubmit={handleSubmit}>
                 <div className={styles.form}>
                     <div>
@@ -65,7 +61,6 @@ const RegistrationForm = () => {
                     </Button>
                 </div>
             </form>
-            <GoogleProvider />
         </>
     );
 };

@@ -1,9 +1,9 @@
 'use client';
 
-import styles from '../../auth.module.css';
+import styles from './../auth.module.css';
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
-import { Button } from '@/components';
+import { Button } from '@/app/components';
+import { FormEvent, useState } from 'react';
 
 import { doCredentialLogin } from '@/app/actions';
 
@@ -11,7 +11,7 @@ export const CredentialProvider = (): JSX.Element => {
     const router = useRouter();
     const [error, setError] = useState('');
 
-    async function handleFormSubmit(event: Event) {
+    async function handleFormSubmit(event: FormEvent<HTMLFormElement>) {
         event.preventDefault();
 
         try {
@@ -19,7 +19,7 @@ export const CredentialProvider = (): JSX.Element => {
             const response = await doCredentialLogin(formData);
             if (!!response.error) {
                 setError(response.error.message);
-                console.log(response)
+                console.log(response);
             } else {
                 router.push('/');
             }
@@ -29,8 +29,9 @@ export const CredentialProvider = (): JSX.Element => {
     }
     return (
         <>
-            <div>{error}</div>
-            <form onSubmit={handleFormSubmit}>
+            <form onSubmit={handleFormSubmit} className={styles.absolute}>
+            <div className={styles.error}>{error}</div>
+
                 <div className={styles.form}>
                     <div>
                         <div className={styles.form_field}>
@@ -49,8 +50,6 @@ export const CredentialProvider = (): JSX.Element => {
                     <Button type="submit" appearance="primary" size="medium">
                         Войти
                     </Button>
-                 
-               
                 </div>
             </form>
         </>

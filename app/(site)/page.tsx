@@ -7,7 +7,7 @@
 import Image from 'next/image';
 import Input from './components/Input/Input';
 import { Logout } from './components/Logout/Logout';
-import { auth } from '@/app/auth';
+import { auth } from '@/app/lib/auth';
 
 export default async function Products() {
 
