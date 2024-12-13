@@ -7,21 +7,26 @@
 import Image from 'next/image';
 import Input from './components/Input/Input';
 import { Logout } from './components/Logout/Logout';
-import { auth } from '@/app/lib/auth';
+import { auth } from '@/auth';
+import Products from './components/Products/Products';
+// import { getDataFromToken } from '../lib/getDataFromToken';
+import { FaUserAlt } from "react-icons/fa";
 
-export default async function Products() {
+export default async function Main() {
 
     const session = await auth();
-
+  
     return (
-        <div>
+        <main>
          
             <Input></Input>
             <div>
-                <p>{session?.user?.email}</p>
-                {session?.user && <Image src={session?.user?.image} width={50} height={50} alt={session?.user?.name} />}
+                <p>{JSON.stringify(session?.user)}</p>
+                {session?.user?.image ? <Image src={session?.user?.image} width={50} height={50} alt={session?.user?.name}/> : <FaUserAlt />
+            }
                 <Logout />
+              <Products/>
             </div>
-        </div>
+        </main>
     );
 }

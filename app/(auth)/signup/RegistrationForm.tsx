@@ -1,11 +1,14 @@
 'use client';
 import React from 'react';
 import styles from './../auth.module.css';
-import { Button } from '@/app/components';
+import { Button } from '@/components';
 import { useRouter } from 'next/navigation';
+import { useState, useRef } from 'react';
 
 const RegistrationForm = () => {
     const router = useRouter();
+    const [error, setError] = useState('');
+    const ref = useRef<HTMLFormElement>(null);
     async function handleSubmit(event: Event) {
         event.preventDefault();
         try {
@@ -26,7 +29,14 @@ const RegistrationForm = () => {
                 }),
             });
 
-            response.status === 201 && router.push('/login');
+            if (response.status === 400) {
+                setError('Пользователь уже существует');
+                setTimeout(() => setError(''), 2000);
+                ref?.current?.reset();
+            }
+            if (response.status === 201) {
+                router.push('/login');
+            }
         } catch (error) {
             console.log(error.message);
         }
@@ -34,7 +44,8 @@ const RegistrationForm = () => {
 
     return (
         <>
-            <form onSubmit={handleSubmit}>
+            <form ref={ref} onSubmit={handleSubmit} className={styles.absolute}>
+                <div className={styles.error}>{error}</div>
                 <div className={styles.form}>
                     <div>
                         <div className={styles.form_field}>

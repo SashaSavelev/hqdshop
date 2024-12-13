@@ -6,10 +6,10 @@ export default function AuthLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <body className={styles.center}>
+        <div className={styles.center}>
           
             <Image src="/logo.jpg" width={100} height={100} alt='shop-logo'></Image>
             {children}
-        </body>
+        </div>
     );
 }

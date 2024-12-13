@@ -1,5 +1,5 @@
 import styles from './Logout.module.css'
-import { doSocialLogout } from '@/app/actions'
+import { doSocialLogout } from '@/lib/actions'
 
 export const Logout = (): JSX.Element => {
     return (

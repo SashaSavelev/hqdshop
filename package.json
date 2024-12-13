@@ -3,18 +3,22 @@
     "version": "0.1.0",
     "private": true,
     "scripts": {
-        "dev": "next dev -p 8082",
+        "dev": "next dev -p 8081",
         "debug": "NODE_OPTIONS='--inspect=9229' next dev",
         "build": "next build",
         "start": "next start",
         "lint": "next lint"
     },
     "dependencies": {
+        "@auth/mongodb-adapter": "^3.7.4",
         "axios": "^1.7.7",
         "bcryptjs": "^2.4.3",
+        "bson": "^6.10.1",
         "classnames": "^2.5.1",
+        "jsonwebtoken": "^9.0.2",
+        "mongodb": "^6.11.0",
         "mongoose": "^8.8.3",
-        "next": "14.2.15",
+        "next": "^15.0.3",
         "next-auth": "^5.0.0-beta.25",
         "react": "^18",
         "react-dom": "^18",
@@ -23,6 +27,7 @@
     },
     "devDependencies": {
         "@types/bcryptjs": "^2.4.6",
+        "@types/jsonwebtoken": "^9.0.7",
         "@types/node": "^20",
         "@types/react": "^18",
         "@types/react-dom": "^18",

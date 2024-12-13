@@ -1,5 +1,5 @@
-import { doSocialLogin } from '@/app/actions';
-import { Button } from '@/app/components';
+import { doSocialLogin } from '@/lib/actions';
+import { Button } from '@/components';
 import Image from 'next/image';
 import styles from '../auth.module.css';
 import cn from 'classnames'

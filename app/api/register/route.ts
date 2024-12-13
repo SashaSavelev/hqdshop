@@ -1,12 +1,21 @@
 import { NextResponse } from 'next/server';
-import { createUser } from '@/app/queries/users';
+import { createUser } from '@/queries/users';
 import bcrypt from 'bcryptjs';
-import { dbConnect } from '@/app/lib/mongo';
+import { dbConnect } from '@/lib/mongo';
+import { User } from '@/model/user-model';
 
-export const POST = async (request) => {
-    const { name, email, password } = await request.json();
+export const POST = async request => {
+    const { name, email, password, favorites } = await request.json();
 
     await dbConnect();
+
+    const potentialUser = await User.findOne({
+        email: email,
+    });
+
+    if (potentialUser) {
+        return new NextResponse('User already exists', { status: 400 });
+    }
 
     const hashedPassword = await bcrypt.hash(password, 5);
 
@@ -14,17 +23,16 @@ export const POST = async (request) => {
         name,
         password: hashedPassword,
         email,
+        favorites,
     };
 
     try {
-        await createUser(newUser)
-
+        await createUser(newUser);
     } catch (error) {
         return new NextResponse(error.message, {
             status: 500,
         });
     }
-
 
     return new NextResponse('User has been created', {
         status: 201,
