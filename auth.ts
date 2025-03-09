@@ -34,13 +34,11 @@ export const {
                     const user = await User.findOne({
                         email: credentials?.email,
                     });
-                    console.log(user);
 
                     if (user) {
                         const isMatch = await bcrypt.compare(credentials.password, user.password);
 
                         if (isMatch) {
-
                             return user;
                         } else {
                             throw new Error('Email or Password is not correct');
@@ -53,30 +51,34 @@ export const {
                 }
             },
         }),
-        
-        
-        
-
     ],
-    
-    
-    // callbacks: {
-    //     async jwt({ token, user }) {
-    //         console.log(`ИЗ ТОКЕНА!!!!${user}`);
-    //         if (user) {
-    //             token.id = user._id;
-    //             token.email = user.email;
-    //         }
-    //         console.log(token);
-    //         return token;
-    //     },
-    //     async session({ session, token }) {
-    //         // Добавить данные токена в сессию
-    //         console.log(` СЕССИЯ!!!!${session}`)
-    //         session.user.id = token.id;
-    //         session.user.email = token.email;
-    //         return session;
-    //     },
-    // },
-    // secret: process.env.AUTH_SECRET, // Используется для подписи токена
+    callbacks: {
+        async signIn({ user }) {
+            try {
+                const userExist = await User.findOne({ email: user.email });
+
+                if (!userExist) {
+                    await User.create({
+                        email: user.email,
+                        name: user.name,
+                        password: process.env.GOOGLE_CLIENT_SECRET,
+                        favorites: [],
+                        cart: []
+                    });
+                }
+            } catch (error) {
+                console.log(error);
+                return false;
+            }
+            return true;
+        },
+        async jwt({ token, user }) {
+            if (user) {
+                const currentUser = await User.findOne({ email: user.email });
+                token.sub = currentUser._id;
+            }
+
+            return token;
+        },
+    },
 });

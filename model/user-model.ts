@@ -19,6 +19,10 @@ const userSchema = new Schema<IUser>({
     favorites: {
         required: undefined,
         type: [productSchema]
+    },
+    cart: {
+        required: undefined,
+        type: [{product: productSchema, quantity: String}]
     }
 })
 

@@ -1,13 +1,14 @@
 import { NextResponse } from 'next/server';
-import { createUser } from '@/queries/users';
+import { createUser } from '@/lib/users';
 import bcrypt from 'bcryptjs';
 import { dbConnect } from '@/lib/mongo';
 import { User } from '@/model/user-model';
 
 export const POST = async request => {
-    const { name, email, password, favorites } = await request.json();
+    const { name, email, password, favorites, cart } = await request.json();
 
     await dbConnect();
+    
 
     const potentialUser = await User.findOne({
         email: email,
@@ -24,6 +25,7 @@ export const POST = async request => {
         password: hashedPassword,
         email,
         favorites,
+        cart
     };
 
     try {

@@ -10,7 +10,6 @@ const Item = async (props: { params: Promise<{ id: string }> }) => {
     <p>{JSON.stringify(productData)}</p>
     <Link href={`/item/${id}/checkout`}>КУПИТЬ</Link>
 
-    {/* `item/${item._id}` */}
     </div>;
 };
 

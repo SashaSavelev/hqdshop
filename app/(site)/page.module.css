@@ -30,8 +30,10 @@
 .main {
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  justify-content: center;
+  gap: 0,5rem;
   grid-row-start: 2;
+background-color: #1a1a1a;
 }
 
 .main ol {

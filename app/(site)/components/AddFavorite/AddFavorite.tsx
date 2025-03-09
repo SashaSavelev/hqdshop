@@ -3,15 +3,36 @@ import { Button } from '@/components';
 import { FaHeart } from 'react-icons/fa';
 import styles from './AddFavorite.module.css';
 import cn from 'classnames';
-import { AddFavoriteProps } from './AddFavorite.props';
+import { updateFavorites } from '@/lib/UpdateFavorites';
 
-const AddFavorite = ({ size, item }: AddFavoriteProps) => {
+import { AddFavoriteProps } from './AddFavorite.props';
+import { useEffect } from 'react';
+import { useFavoritesStore } from '@/lib/store/store';
+
+const AddFavorite = ({ item, favoritesIds }: AddFavoriteProps) => {
+    const setFavoritesIds = useFavoritesStore(state => state.setFavoritesIds);
+
+    const toggleFavorites = useFavoritesStore(state => state.toggleFavorites);
+
+    const ids = useFavoritesStore(state => state.ids);
+
+    useEffect(() => {
+        setFavoritesIds(favoritesIds);
+    }, []);
+
+    const included = ids.includes(item._id);
+
+    async function addProduct() {
+        toggleFavorites(item._id);
+
+        await updateFavorites(item);
+    }
     return (
-        <div className={styles.small}>
-            <Button onClick={() => console.log(2)} size="small" appearance="imageButton">
-                <FaHeart className={cn(styles.small)} />
+        <div className={cn(styles.favorite)}>
+            <Button onClick={addProduct} size="medium" appearance="imageButton">
+                <FaHeart className={cn({ [styles.active]: included == true })} />
             </Button>
-            <span>Добавить в избранное</span>
+            <span className={styles.span}>Добавить в избранное</span>
         </div>
     );
 };

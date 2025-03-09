@@ -1,19 +1,13 @@
-import React from 'react'
 import styles from './Products.module.css';
-import { fetchProducts } from '@/lib/fetchProducts';
 import Product from '../Product/Product';
 import { IProduct } from '@/types/product';
+import { ProductsProps } from './Products.props';
+const Products = async ({ products, favorites }: ProductsProps) => {
+    const favoritesIds = (favorites || []).map((i: IProduct) => i._id);
 
+    return (
+        <div className={styles.wrap}>{products && products.map((item: IProduct) => <Product item={item} key={item._id} favoritesIds={favoritesIds} />)}</div>
+    );
+};
 
-const Products = async() => {
-    const products = await fetchProducts();
-
-  return (
-    <div>
-
-{products&& products.map((item: IProduct)=> <Product item={item} key={item._id}></Product>)}
-    </div>
-  )
-}
-
-export default Products
+export default Products;

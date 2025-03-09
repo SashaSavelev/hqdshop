@@ -1,8 +1,14 @@
 import React from 'react'
 
-const checkout = () => {
+const checkout = async({ params}: {params: {id: string}} ) => {
+  
+  const {id} = await params;
+ 
   return (
-    <div>checkout</div>
+    <div>checkout
+
+      {id}
+    </div>
   )
 }
 

@@ -7,6 +7,8 @@
   --darkPinky: #f93d5c;
   --lightSand: #a28089;
   --darkGray:  #4a4a4a;
+  --lightGray:  #dedddd;
+
 }
 
 @media (prefers-color-scheme: dark) {

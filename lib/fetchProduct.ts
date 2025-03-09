@@ -9,6 +9,7 @@ export const fetchProduct = async (id: string) => {
             method: "GET",
             headers: passingHeaders
           });
+
         const product = await result.json();
         if (!result.ok) {
             throw new Error('Failed to fetch product data');

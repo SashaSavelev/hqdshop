@@ -2,7 +2,8 @@ import { HeaderProps } from './Header.props';
 import styles from './Header.module.css';
 import { Submitting } from '../Submitting/Submitting';
 import { Cart } from "../Cart/Cart";
-import { Favorite } from '../Favorite/Favorite';
+import { Favorites } from '../Favorites/Favorites';
+import CurrentUser from '../CurrentUser/CurrentUser';
  
 // import cn from 'classnames';
 
@@ -12,7 +13,8 @@ export  const Header = ({}: HeaderProps): JSX.Element=> {
             <img src="/logo.jpg" alt="logo" className={styles.logo}/>
             <Submitting/> 
             <Cart/>
-            <Favorite/>
+            <Favorites/>
+            <CurrentUser/>
         </div>
     )
 }

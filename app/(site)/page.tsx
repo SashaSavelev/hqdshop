@@ -1,32 +1,23 @@
-// 'use client';
-
-// import axios from 'axios';
-// import { useEffect, useState } from 'react';
-// import styles from './page.module.css';
-// import Link from 'next/link';
-import Image from 'next/image';
+import { fetchProducts } from '@/lib/fetchProducts';
 import Input from './components/Input/Input';
-import { Logout } from './components/Logout/Logout';
-import { auth } from '@/auth';
 import Products from './components/Products/Products';
-// import { getDataFromToken } from '../lib/getDataFromToken';
-import { FaUserAlt } from "react-icons/fa";
+import { fetchUserInfo } from '@/lib/fetchFavorites';
+import styles from './page.module.css';
 
-export default async function Main() {
+export default async function Main({ searchParams }: { searchParams: Promise<{ [key: string]: string | string[] | undefined }> }) {
+    const filters = await searchParams;
 
-    const session = await auth();
-  
+    console.log(filters, 'filters');
+
+    const products = await fetchProducts(filters);
+
+    const { favorites, cart } = await fetchUserInfo();
+
     return (
-        <main>
-         
-            <Input></Input>
-            <div>
-                <p>{JSON.stringify(session?.user)}</p>
-                {session?.user?.image ? <Image src={session?.user?.image} width={50} height={50} alt={session?.user?.name}/> : <FaUserAlt />
-            }
-                <Logout />
-              <Products/>
-            </div>
+        <main className={styles.main}>
+            <Input />
+
+            <Products products={products} favorites={favorites} />
         </main>
     );
 }

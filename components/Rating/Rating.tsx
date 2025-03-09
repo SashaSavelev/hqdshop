@@ -6,7 +6,7 @@ import { CiStar } from 'react-icons/ci';
 import { FaStar } from 'react-icons/fa';
 import { useState, useEffect } from 'react';
 
-export const Rating = ({ isEditable = false, rating, setRating, ...props }: RatingProps): JSX.Element => {
+export const Rating = ({ isEditable = false, rating, ...props }: RatingProps): JSX.Element => {
     const [ratingArray, setRatingArray] = useState<JSX.Element[]>(new Array(5).fill(<></>));
 
     useEffect(() => {

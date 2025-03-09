@@ -4,6 +4,8 @@ import { auth } from '@/auth';
 
 export const GET = auth((req) => {
     console.log(req.auth, 'API CALL ME')
+
+    
     if (req.auth) {
         return new NextResponse('ЭТО Я', {
             status: 201,

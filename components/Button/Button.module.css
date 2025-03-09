@@ -8,13 +8,11 @@
   display: inline-block;
   font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
-
-
   line-height: 20px;
   list-style: none;
   margin: 0;
   outline: none;
-
+  
   position: relative;
   text-align: center;
   text-decoration: none;
@@ -30,20 +28,21 @@
 
 
 .imageButton {
-    display: flex;
-    align-items: center;
-    gap: 3px;
-   border: none;
-   background: none;
-   color:var(--foreground);
-   cursor: pointer;
-   padding: 3px;
-   height: 20px;
-   transition: color 300ms;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  border: none;
+  background: none;
+  color: var(--foreground);
+  cursor: pointer;
+  padding: 3px;
+  height: 20px;
+  transition: color 300ms;
 }
 
-.imageButton:hover, .imageButton:focus {
-    color: var(--darkGray);
+.imageButton:hover,
+.imageButton:focus {
+  color: var(--darkGray);
 }
 
 .small {
@@ -52,4 +51,10 @@
 
 .medium {
   padding: 4px 10px;
+}
+
+.big {
+  padding: 6px 12px;
+  font-size: 16px;
+  
 }

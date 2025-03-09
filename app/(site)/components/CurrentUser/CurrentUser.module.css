@@ -1,0 +1,22 @@
+.div {
+    background-color: yellow;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem;
+}
+
+.user {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.iconDisabled {
+    color: var(--lightGray);
+}
+
+.iconActive {
+    color: #000;
+
+}

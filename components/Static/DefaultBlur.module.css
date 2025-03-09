@@ -1,0 +1,15 @@
+.imageContainer {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    background: #f0f0f0; /* Серый фон как заглушка */
+}
+
+.imageContainer img {
+    transition: opacity 0.5s ease-in-out;
+    opacity: 0;
+}
+
+.imageContainer img.loaded {
+    opacity: 1;
+}
