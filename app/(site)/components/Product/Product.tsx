@@ -4,7 +4,6 @@ import Link from 'next/link';
 import AddFavorite from '../AddFavorite/AddFavorite';
 import Image from 'next/image';
 import AddToCart from '../AddToCart/AddToCart';
-import { DefaultBlur } from '@/components/Static/DefaultBlur';
 
 const Product = async ({ item, favoritesIds }: ProductProps) => {
     return (

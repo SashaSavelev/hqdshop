@@ -1,12 +1,11 @@
-import { fetchFavorites } from '@/lib/fetchFavorites';
+import { fetchUserInfo } from '@/lib/fetchFavorites';
 import Products from '../components/Products/Products';
 
 export default async function Favorites() {
-    console.log(fetchFavorites)
-    const favorites = await fetchFavorites();
+    const {favorites} = await fetchUserInfo();
     return (
         <div>
-            <Products products={favorites.favorites} favorites={favorites} />
+            <Products products={favorites} favorites={favorites} />
         </div>
     );
 }

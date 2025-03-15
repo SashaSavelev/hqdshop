@@ -19,3 +19,8 @@ export const useFavoritesStore = create<State & Actions>()(set => ({
         }));
     },
 }));
+
+
+useFavoritesStore.subscribe((state) => {
+    console.log("Избранное обновилось:", state.ids);
+});
