@@ -9,7 +9,7 @@ const RegistrationForm = () => {
     const router = useRouter();
     const [error, setError] = useState('');
     const ref = useRef<HTMLFormElement>(null);
-    async function handleSubmit(event: Event) {
+    async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault();
         try {
             const formData = new FormData(event.currentTarget);
@@ -44,34 +44,34 @@ const RegistrationForm = () => {
 
     return (
         <>
-            <form ref={ref} onSubmit={handleSubmit} className={styles.absolute}>
-                <div className={styles.error}>{error}</div>
-                <div className={styles.form}>
-                    <div>
-                        <div className={styles.form_field}>
-                            <label className={styles.label} htmlFor="name">
-                                Имя
-                            </label>
-                            <input className={styles.input} type="name" name="name" id="name" />
-                        </div>
-                        <div className={styles.form_field}>
-                            <label className={styles.label} htmlFor="email">
-                                Почта
-                            </label>
-                            <input className={styles.input} type="email" name="email" id="email" />
-                        </div>
-                        <div className={styles.form_field}>
-                            <label className={styles.label} htmlFor="password">
-                                Пароль
-                            </label>
-                            <input className={styles.input} type="password" name="password" id="password" />
-                        </div>
-                    </div>
-                    <Button type="submit" appearance="primary" size="medium">
-                        Регистрация
-                    </Button>
-                </div>
-            </form>
+            <form ref={ref} onSubmit={handleSubmit} className={styles.absolute} autoComplete="off">
+    <div className={styles.error}>{error}</div>
+    <div className={styles.form}>
+        <div>
+            <div className={styles.form_field}>
+                <label className={styles.label} htmlFor="name">
+                    Имя
+                </label>
+                <input className={styles.input} type="text" name="name" id="name" autoComplete="off" />
+            </div>
+            <div className={styles.form_field}>
+                <label className={styles.label} htmlFor="email">
+                    Почта
+                </label>
+                <input className={styles.input} type="email" name="email" id="email" autoComplete="off" />
+            </div>
+            <div className={styles.form_field}>
+                <label className={styles.label} htmlFor="password">
+                    Пароль
+                </label>
+                <input className={styles.input} type="password" name="password" id="password" autoComplete="new-password" />
+            </div>
+        </div>
+        <Button type="submit" appearance="primary" size="medium">
+            Регистрация
+        </Button>
+    </div>
+</form>
         </>
     );
 };

@@ -34,29 +34,29 @@ export const CredentialProvider = (): JSX.Element => {
 
     return (
         <>
-            <form ref={ref} onSubmit={handleFormSubmit} className={styles.absolute}>
-                <div className={styles.error}>{error}</div>
+         <form ref={ref} onSubmit={handleFormSubmit} autoComplete="on" className={styles.absolute}>
+    <div className={styles.error}>{error}</div>
 
-                <div className={styles.form}>
-                    <div>
-                        <div className={styles.form_field}>
-                            <label className={styles.label} htmlFor="email">
-                                Почта
-                            </label>
-                            <input className={styles.input} type="email" name="email" id="email" />
-                        </div>
-                        <div className={styles.form_field}>
-                            <label className={styles.label} htmlFor="password">
-                                Пароль
-                            </label>
-                            <input className={styles.input} type="password" name="password" id="password" />
-                        </div>
-                    </div>
-                    <Button type="submit" appearance="primary" size="medium">
-                        Войти
-                    </Button>
-                </div>
-            </form>
+    <div className={styles.form}>
+        <div>
+            <div className={styles.form_field}>
+                <label className={styles.label} htmlFor="email">
+                    Почта
+                </label>
+                <input className={styles.input} type="email" name="email" id="email" autoComplete="email" />
+            </div>
+            <div className={styles.form_field}>
+                <label className={styles.label} htmlFor="password">
+                    Пароль
+                </label>
+                <input className={styles.input} type="password" name="password" id="password" autoComplete="current-password"/>
+            </div>
+        </div>
+        <Button type="submit" appearance="primary" size="medium">
+            Войти
+        </Button>
+    </div>
+</form>
         </>
     );
 };
