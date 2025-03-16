@@ -39,6 +39,7 @@ const Input = (): JSX.Element => {
                         type="text"
                         value={filters.name}
                         placeholder="Banana"
+                        autoComplete="off"
                         className={cn(styles.input_name)}
                     />
                 </div>
