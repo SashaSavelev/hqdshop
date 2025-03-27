@@ -1,6 +1,17 @@
 import  mongoose, {Schema} from "mongoose";
-import {IUser} from '../types/auth';
+import {IUser, ICartItem} from '../types/auth';
 import { productSchema } from "./products-model";
+
+const cartSchema = new Schema<ICartItem>({
+    product: {
+        required: true,
+        type: productSchema
+    },
+    quantity: {
+        required: true,
+        type: Number
+    }
+})
  
 
 const userSchema = new Schema<IUser>({
@@ -22,7 +33,7 @@ const userSchema = new Schema<IUser>({
     },
     cart: {
         required: undefined,
-        type: [{product: productSchema, quantity: String}]
+        type: [cartSchema]
     }
 })
 

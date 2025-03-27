@@ -10,7 +10,7 @@ export default function Layout({
 }>) {
   return (
    <div>
-     <Header>3</Header>
+     <Header>3~</Header>
        {children}
 
    </div>

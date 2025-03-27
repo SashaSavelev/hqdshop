@@ -3,7 +3,7 @@ import getUserToken from '@/lib/getUserToken';
 import { NextResponse } from 'next/server';
 import { IProduct } from '@/types/product';
 
-export const POST = async (request) => {
+export const POST = async (request: Request) => {
     try {
         const { item } = await request.json();
 

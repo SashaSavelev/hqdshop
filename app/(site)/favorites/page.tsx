@@ -5,7 +5,7 @@ export default async function Favorites() {
     const {favorites} = await fetchUserInfo();
     return (
         <div>
-            <Products products={favorites} favorites={favorites} />
+            <Products products={favorites}  />
         </div>
     );
 }

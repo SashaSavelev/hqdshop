@@ -1,15 +1,16 @@
 'use client';
 import styles from './Logout.module.css';
 import { doSocialLogout } from '@/lib/actions';
-import { useFavoritesStore } from '@/lib/store/store';
 import { Button } from '@/components';
+import { useAuthStore } from '@/lib/isLoged/store';
 
 export const Logout = (): JSX.Element => {
-    const clearFavoritesIds = useFavoritesStore(state => state.clearFavoritesIds);
+
+    const logout = useAuthStore(state=> state.logout)
 
     const handleLogOut = () => {
+        logout()
         doSocialLogout();
-        clearFavoritesIds();
     };
     return (
         <Button appearance="primary" size="small" onClick={handleLogOut}>

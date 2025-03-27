@@ -21,7 +21,7 @@ export const fetchUserInfo = async () => {
         }
 
         const favorites = await result.json();
-        console.log(favorites)
+        // console.log(favorites)
 
         return favorites;
     } catch (error) {

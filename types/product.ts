@@ -5,3 +5,8 @@ export interface IProduct {
     stock: number;
     image: string;
 }
+
+export type CartItem = {
+    id: string;
+    quantity: number;
+}
