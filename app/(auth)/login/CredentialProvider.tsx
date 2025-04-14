@@ -4,6 +4,8 @@ import styles from './../auth.module.css';
 import { useRouter } from 'next/navigation';
 import { Button } from '@/components';
 import { FormEvent, useRef, useState } from 'react';
+import { useAuthStore } from '@/lib/isLoged/store';
+
 
 import { doCredentialLogin } from '@/lib/actions';
 
@@ -11,6 +13,7 @@ export const CredentialProvider = (): JSX.Element => {
     const router = useRouter();
     const [error, setError] = useState('');
     const ref = useRef<HTMLFormElement>(null);
+    const toggleIsLoggedIn = useAuthStore(state=> state.toggleIsLoggedIn)
     async function handleFormSubmit(event: FormEvent<HTMLFormElement>) {
         event.preventDefault();
         try {
@@ -21,11 +24,12 @@ export const CredentialProvider = (): JSX.Element => {
             
             if (!!response.error) {
                 console.error(response.error);
-                setError(response.error.message);
+                setError(`response.error.message`);
               
             } else {
                 router.push("/");
             }
+            toggleIsLoggedIn()
         } catch (e) {
             console.error(e);
             setError("Проверьте ваши данные");

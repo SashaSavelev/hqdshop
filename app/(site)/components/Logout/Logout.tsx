@@ -6,10 +6,10 @@ import { useAuthStore } from '@/lib/isLoged/store';
 
 export const Logout = (): JSX.Element => {
 
-    const logout = useAuthStore(state=> state.logout)
+    const toggleIsLoggedIn = useAuthStore(state=> state.toggleIsLoggedIn)
 
     const handleLogOut = () => {
-        logout()
+        toggleIsLoggedIn()
         doSocialLogout();
     };
     return (

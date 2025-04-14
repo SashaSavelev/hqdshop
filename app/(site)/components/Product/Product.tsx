@@ -7,7 +7,7 @@ import AddToCart from '../AddToCart/AddToCart';
 
 const Product = async ({ item, favoritesIds, cartItems }: ProductProps) => {
     const includedFavorite = favoritesIds.includes(item._id);
-
+    
     const includedCartItem = cartItems.find(el => el.id === item._id);
 
     const cartInfo = !!includedCartItem ? includedCartItem : null;

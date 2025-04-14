@@ -12,10 +12,12 @@
     "dependencies": {
         "@auth/mongodb-adapter": "^3.7.4",
         "@plaiceholder/next": "^3.0.0",
+        "@types/js-cookie": "^3.0.6",
         "axios": "^1.7.7",
         "bcryptjs": "^2.4.3",
         "bson": "^6.10.1",
         "classnames": "^2.5.1",
+        "js-cookie": "^3.0.5",
         "jsonwebtoken": "^9.0.2",
         "mongodb": "^6.11.0",
         "mongoose": "^8.8.3",

@@ -4,7 +4,7 @@ import { NextRequest } from 'next/server';
 export const getDataFromToken = (request: NextRequest) => {
     try {
         const token = request.cookies;
-        console.log(token);
+        console.log(token, 'TOKEN!!!');
     } catch (error) {
         console.log(error)
     }
