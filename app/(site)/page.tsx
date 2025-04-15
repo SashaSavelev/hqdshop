@@ -7,7 +7,7 @@ export default async function Main({ searchParams }: { searchParams: Promise<{ [
     const filters = await searchParams;
 
     const products = await fetchProducts(filters);
-
+    console.log(2)
     return (
         <main className={styles.main}>
             <Input />
