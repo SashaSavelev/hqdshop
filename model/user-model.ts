@@ -2,7 +2,7 @@ import  mongoose, {Schema} from "mongoose";
 import {IUser, ICartItem} from '../types/auth';
 import { productSchema } from "./products-model";
 
-const cartSchema = new Schema<ICartItem>({
+export const cartSchema = new Schema<ICartItem>({
     product: {
         required: true,
         type: productSchema

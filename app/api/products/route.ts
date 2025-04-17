@@ -12,8 +12,8 @@ export const GET = async (req: Request): Promise<Response> => {
 
       try {
         const filtered = await Product.find({
-          ...(regexName && { flavor: { $regex: regexName } }), // Only add regex filter if regexName is valid
-          ...(price && { price: { $lte: parseInt(price) } }), // Convert price to an integer
+          ...(regexName && { flavor: { $regex: regexName } }),
+          ...(price && { price: { $lte: parseInt(price) } }),
         });
         return new Response(JSON.stringify(filtered), {
           status: 200,

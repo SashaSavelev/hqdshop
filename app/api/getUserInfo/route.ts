@@ -15,7 +15,7 @@ export const GET = async (request: Request) => {
         const favorites = user.favorites;
         const cart = user.cart;
 
-        return NextResponse.json({ message: 'Got favorites', cart, favorites });
+        return NextResponse.json({ message: 'Got user Info', cart, favorites });
     } catch (error) {
         console.error('Error getting favorites', error);
         return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
