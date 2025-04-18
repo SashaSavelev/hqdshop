@@ -3,5 +3,5 @@ export interface ISession {
     sessionId: string;
     favorites: string[];
     cartItems: CartItem[];
-
+    expiresAt: Date;
 }
